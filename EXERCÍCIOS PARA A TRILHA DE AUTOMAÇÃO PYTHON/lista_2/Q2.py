@@ -1,6 +1,6 @@
 # Q2) Pegue o arquivo JSON 1 e printe apenas o nome do time vencedor no terminal.
 import json
-
+# Criar uma função que lê o arquivo .json
 def retornar_json():
     with open("JSON1.json", encoding="utf-8") as partida:
         json_manipulavel = json.load(partida)
