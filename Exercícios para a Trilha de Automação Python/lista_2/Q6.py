@@ -6,5 +6,18 @@ def retornar_json():
         json_manipulavel = json.load(campeonato)
         return json_manipulavel
 json_retornado = retornar_json()
-for i in json_retornado:
-    print(i)
+#print(json_retornado)
+edicao_atual = json_retornado['edicao_atual']
+fase_atual = json_retornado['fase_atual']
+rodada_atual = json_retornado['rodada_atual']
+print('-'*30)
+print(json.dumps(edicao_atual, indent=2))
+print('-'*30)
+print(json.dumps(fase_atual, indent=2))
+print('-'*30)
+print(json.dumps(rodada_atual, indent=2))
+print('-'*30)
+
+
+
+
