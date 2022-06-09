@@ -5,7 +5,6 @@ import pandas as pd
 
 arquivo = pd.read_csv('CSV.csv', encoding='UTF-8', sep=",")
 arquivo_year = arquivo['Year']
-arquivo_atores = arquivo[(arquivo["Year"] == 1987) > (arquivo["Year"] == 1999)]
+arquivo_atores = arquivo.loc[59:71]
 
-print("Ator: {} " .format(arquivo_atores["Name"]), "Idade: {}" .format(arquivo_atores["Age"].map(str)))
-
+print(arquivo_atores[['Name', 'Age']])
