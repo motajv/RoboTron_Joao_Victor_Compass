@@ -1,0 +1,1 @@
+# Q7) Percorra o JSON 2, utilizando o loop FOR e printe suas chaves principais.
