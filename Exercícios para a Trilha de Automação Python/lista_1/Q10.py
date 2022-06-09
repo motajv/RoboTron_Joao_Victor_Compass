@@ -11,7 +11,7 @@ if(set(lista_1) == set(lista_2)):
 else:
     print("As listas são diferentes!")
 
-# print("As seguintes frutas estão em ambas as listas: ", set(lista_1) & set(lista_2))
+print("As seguintes frutas estão em ambas as listas: ", set(lista_1) & set(lista_2))
 
 
 
