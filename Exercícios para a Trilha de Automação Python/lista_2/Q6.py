@@ -6,6 +6,5 @@ def retornar_json():
         json_manipulavel = json.load(campeonato)
         return json_manipulavel
 json_retornado = retornar_json()
-#print(json_retornado)
-print(type(json_retornado['campeonato_id']))
-print(json_retornado)
+for i in json_retornado:
+    print(i)
