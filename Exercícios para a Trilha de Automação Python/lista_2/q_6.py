@@ -6,17 +6,17 @@ def retornar_json():
         json_manipulavel = json.load(campeonato)
         return json_manipulavel
 json_retornado = retornar_json()
-#print(json_retornado)
-edicao_atual = json_retornado['edicao_atual']
-fase_atual = json_retornado['fase_atual']
-rodada_atual = json_retornado['rodada_atual']
-print('-'*30)
-print(json.dumps(edicao_atual, indent=2))
-print('-'*30)
-print(json.dumps(fase_atual, indent=2))
-print('-'*30)
-print(json.dumps(rodada_atual, indent=2))
-print('-'*30)
+
+lista = ["edicao_atual", "fase_atual", "rodada_atual"]
+
+dados = 2
+
+for objeto in lista:
+    print(f'\nAs {dados} primeiras chave e valor de {objeto} são:')
+    for n in range(dados):
+        chave = list(json_retornado[objeto])[n]
+        valor = json_retornado[objeto][chave]
+        print(f'{chave} : {valor}')
 
 
 
