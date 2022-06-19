@@ -1,0 +1,38 @@
+# Escrevendo cenários de teste na API SERVEREST
+
+POST - Fazer login com sucesso na API SERVER:
+- Possuir dados válidos;
+- Ter um usuário cadastrado;
+- A requisição deve voltar um status 200.
+
+GET - No endpoint /usuarios da API SERVEREST deve listar todos os usuários:
+- Mostrar todos os usuários cadastrados na aplicação;
+- A requisição deve voltar um status 200.
+
+POST - Criar um novo usuário na API SERVEREST em /usuarios:
+- Dados válidos;
+- O usuário não deve estar cadastrado;
+- O usuário deve ter e-mail e senha;
+- A requisição deve voltar um status 200.
+
+POST - Fazer login com usuário inválido na API SERVEREST:
+- Utilizar dados válidos;
+- Não pode estar cadastrado;
+- A requisição deve voltar um status 400.
+
+POST - Tentar criar usuário com dados inválidos na API SERVEREST em /usuarios:
+- Utilizar dados inválidos no cadastr;
+- O usuário pode já estar cadastrado;
+- A requisição deve voltar um status 400.
+
+# Fazer juntos
+
+PUT - Tentar editar usuário com id "0uxuPY0cbmQhpEz1":
+- Utilizar dados válidos para edição;
+- Ter o usuário já cadastrado;
+- A requisição deve voltar um status 200.
+
+DELETE - Excluir usuário com id "0uxuPY0cbmQhpEz1":
+- Validar que o usuário com id "0uxuPY0cbmQhpEz1" existe;
+- O usuário com id "0uxuPY0cbmQhpEz1" não deve ter um carrinho cadastrado;
+- A requisição deve voltar um status 200.

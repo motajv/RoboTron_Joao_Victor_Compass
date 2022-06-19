@@ -10,4 +10,4 @@ for v in range(0, x): # define uma faixa de valores para a função auxiliar v, 
     else:
         lista[1].append(v)
 
-print('Os valores ímpares entre 0 e x são: {}'.format(lista[1]))
+print('Os valores ímpares entre 0 e o valor informado são: {}'.format(lista[1]))
