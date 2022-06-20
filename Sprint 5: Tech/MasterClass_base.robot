@@ -13,7 +13,8 @@ Cenário: GET Todos os Usuarios 200
     Criar Sessao
     GET Endpoint /usuarios
     Validar Status Code "200"
-    Validar Quantidade "${32}"
+    Validar Quantidade "${36}"
+    Printar Conteudo Response
 
 Cenário: POST Cadastrar Usuario 201
     [tags]      POST
@@ -45,14 +46,14 @@ GET Endpoint /usuarios
     Set Global Variable      ${response}
 
 POST Endpoint /usuarios
-    &{payload}               Create Dictionary       nome=Daniele Sousa         email=sousadani@compass.com        password=calabresa     administrador=true
+    &{payload}               Create Dictionary       nome=Juca Pirama         email=jucapirama@compass.com        password=calabresa     administrador=true
     ${response}              POST On Session      serverest       /usuarios     data=&{payload}
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 
 PUT Endpoint /usuarios
-    &{payload}               Create Dictionary       nome=Mabia Mota           email=mabia mota@compass.com        password=123        administrador=true
-    ${response}              PUT On Session      serverest       /usuarios/pX4S6V3I9hncC6Tl     data=&{payload}
+    &{payload}               Create Dictionary       nome=Arnold Pirama           email=arnoldpirama@compass.com        password=123        administrador=true
+    ${response}              PUT On Session      serverest       /usuarios/TA3yVuAfpILn5Dah   data=&{payload}
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 
@@ -69,3 +70,6 @@ Validar Quantidade "${quantidade}"
 
 Validar Se Mensagem Contem "${palavra}"
     Should Contain       ${response.json()["message"]}           ${palavra}
+
+Printar Conteudo Response
+    Log To Console       Response: ${response.json()["usuarios"][1]["nome"]}
