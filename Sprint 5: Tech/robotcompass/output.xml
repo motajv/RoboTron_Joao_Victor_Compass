@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.4 on linux)" generated="20220619 23:32:44.657" rpa="false" schemaversion="3">
+<suite id="s1" name="MasterClass base" source="/home/mota/Documentos/Compass/Sprint's/GitHub/RoboTron_Joao_Victor_Compass/Sprint 5: Tech/MasterClass_base.robot">
+<test id="s1-t1" name="Cenário: POST Cadastrar Usuario 201" line="18">
+<kw name="Criar Sessao">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>https://serverest.dev</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220619 23:32:44.699" level="INFO">Creating Session using : alias=serverest, url=https://serverest.dev, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220619 23:32:44.699" endtime="20220619 23:32:44.699"/>
+</kw>
+<status status="PASS" starttime="20220619 23:32:44.699" endtime="20220619 23:32:44.699"/>
+</kw>
+<kw name="POST Endpoint /usuarios">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>nome=Daniele Sousa</arg>
+<arg>email=sousadani@compass.com</arg>
+<arg>password=calabresa</arg>
+<arg>administrador=true</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220619 23:32:44.700" level="INFO">&amp;{payload} = { nome=Daniele Sousa | email=sousadani@compass.com | password=calabresa | administrador=true }</msg>
+<status status="PASS" starttime="20220619 23:32:44.700" endtime="20220619 23:32:44.700"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<arg>data=&amp;{payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220619 23:32:45.248" level="INFO">POST Request : url=https://serverest.dev/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '86', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=nome=Daniele+Sousa&amp;email=sousadani%40compass.com&amp;password=calabresa&amp;administrador=true 
+ </msg>
+<msg timestamp="20220619 23:32:45.248" level="INFO">POST Response : url=https://serverest.dev/usuarios 
+ status=201, reason=Created 
+ headers={'access-control-allow-origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '95c2ee73-2ff6-4a00-92cc-d11d85f23b8e', 'content-type': 'application/json; charset=utf-8', 'X-Cloud-Trace-Context': '4d16d19a726d31d11c4f8ad4290695b9;o=1', 'Date': 'Mon, 20 Jun 2022 02:32:45 GMT', 'Server': 'Google Frontend', 'Content-Length': '82'} 
+ body={
+    "message": "Cadastro realizado com sucesso",
+    "_id": "aVqyjCaFlGfLIKW2"
+} 
+ </msg>
+<msg timestamp="20220619 23:32:45.249" level="INFO">/usr/lib/python3/dist-packages/urllib3/connectionpool.py:1015: InsecureRequestWarning: Unverified HTTPS request is being made to host 'serverest.dev'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<msg timestamp="20220619 23:32:45.249" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20220619 23:32:44.700" endtime="20220619 23:32:45.249"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220619 23:32:45.249" endtime="20220619 23:32:45.250"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220619 23:32:45.251" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20220619 23:32:45.251" endtime="20220619 23:32:45.251"/>
+</kw>
+<status status="PASS" starttime="20220619 23:32:44.699" endtime="20220619 23:32:45.251"/>
+</kw>
+<kw name="Validar Status Code &quot;201&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220619 23:32:45.252" endtime="20220619 23:32:45.254"/>
+</kw>
+<status status="PASS" starttime="20220619 23:32:45.252" endtime="20220619 23:32:45.254"/>
+</kw>
+<kw name="Validar Se Mensagem Contem &quot;sucesso&quot;" sourcename="Validar Se Mensagem Contem &quot;${palavra}&quot;">
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response.json()["message"]}</arg>
+<arg>${palavra}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20220619 23:32:45.255" endtime="20220619 23:32:45.256"/>
+</kw>
+<status status="PASS" starttime="20220619 23:32:45.254" endtime="20220619 23:32:45.256"/>
+</kw>
+<tag>POST</tag>
+<status status="PASS" starttime="20220619 23:32:44.699" endtime="20220619 23:32:45.257"/>
+</test>
+<doc>Arquivo simples para requisição HTTP em APIs Resposta</doc>
+<status status="PASS" starttime="20220619 23:32:44.658" endtime="20220619 23:32:45.258"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">POST</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="MasterClass base">MasterClass base</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

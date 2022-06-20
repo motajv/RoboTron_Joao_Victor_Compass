@@ -17,3 +17,11 @@ Cenário: POST Criar Novo Usuario 201
 
 Cenário: PUT Editar Usuario Existente 200
     PUT Editar Usuario com id "/0uxuPY0cbmQhpEz1" usando Dados Dinamicos
+    Validar Status Code "200"
+    Validar Mensagem "Registro alterado com sucesso"
+
+Cenário: DELETE Apaga Usuario Existente 200
+    DELETE Usuario Especifico com id "/0uxuPY0cbmQhpEz1"
+    Validar Status Code "200"
+    Validar Mensagem "Registro excluído com sucesso | Nenhum registro excluído"
+    
