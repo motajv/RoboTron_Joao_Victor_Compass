@@ -3,8 +3,13 @@
 Documentation       Arquivo simples para requisição HTTP em APIs Resposta
 Library             RequestsLibrary
 
+
 # Sessão para configuração de variáveis para utilização
 * Variables *
+${nome_usuario}         João Victor
+${senha_usuario}        jv123mota
+${email_usuario}        jmota@compass.com
+
 
 # Sessão para criação dos cenarios de teste
 * Test Cases *
