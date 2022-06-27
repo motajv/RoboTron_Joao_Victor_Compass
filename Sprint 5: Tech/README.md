@@ -26,6 +26,6 @@ O ServeRest é uma API REST que simula uma loja virtual para servir de material 
 
 - Executar no terminal: `robot -d ./report_base -i [tag] base.robot`
 
-## Resultado dos testes
+:bookmark_tabs: ## Resultado dos testes
 
 - Acessar o arquivo *log.html* na pasta *report_base*
