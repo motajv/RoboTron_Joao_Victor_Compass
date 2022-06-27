@@ -6,10 +6,10 @@ O ServeRest é uma API REST que simula uma loja virtual para servir de material 
 
 
 ## Endpoints
-- [x] Login
-- [x] Usuários
-- [x] Produtos
-- [x] Carrinhos
+:heavy_check_mark: Login
+:heavy_check_mark: Usuários
+:heavy_check_mark: Produtos
+:heavy_check_mark: Carrinhos
 
 ## Instalação
 
