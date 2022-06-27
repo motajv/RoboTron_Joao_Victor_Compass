@@ -1,0 +1,26 @@
+{
+    "user_valido":{
+        "nome": "Lebron James",
+        "email": "james@nba.com",
+        "password": "nba123",
+        "administrador": "true"
+    },
+    "user_invalido":{
+        "nome": "Jason Tatum",
+        "email": "fulano@qa.com",
+        "password": "nba123",
+        "administrador": "true"
+    },
+    "user_sem_senha":{
+        "nome": "Stephen Curry",
+        "email": "curry@nba.com",
+        "password": "",
+        "administrador": "true"
+    },
+    "user_sem_email":{
+        "nome": "Kawhi Leonard",
+        "email": "",
+        "password": "nba123",
+        "administrador": "true"
+    }
+}
