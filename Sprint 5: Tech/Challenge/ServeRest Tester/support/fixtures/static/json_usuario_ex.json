@@ -1,0 +1,26 @@
+{
+    "user_valido_nao_administrador":{
+        "nome": "Cebolinha",
+        "email": "cebolinha@nba.com",
+        "password": "nba123",
+        "administrador": "false"
+    },
+    "user_invalido":{
+        "nome": "Francisco Fulano",
+        "email": "fulano@qa.com",
+        "password": "nba123",
+        "administrador": "true"
+    },
+    "user_sem_senha":{
+        "nome": "Stephen Curry",
+        "email": "curry@nba.com",
+        "password": "",
+        "administrador": "true"
+    },
+    "user_sem_email":{
+        "nome": "Kawhi James",
+        "email": "",
+        "password": "nba123",
+        "administrador": "true"
+    }
+}
