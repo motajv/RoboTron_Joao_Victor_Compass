@@ -1,8 +1,11 @@
-* Settings *
+*** Settings ***
 Documentation                   Keywords e Variables para Ações do Gerais
-Resource            ../base.robot
 
-* Keywords *
+# Sessão para criação de Keywords Personalizadas
+*** Keywords ***
+Criar Sessao
+    Create Session          serverest           ${BASE_URI}
+
 Validar Status Code "${statuscode}"
     Should Be true          ${response.status_code} == ${statuscode}
 

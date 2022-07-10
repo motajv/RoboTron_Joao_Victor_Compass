@@ -1,26 +1,78 @@
-# Sessão para configuração, documentação, imports de arquivos e library's
-* Settings *
+### Sessão para configuração, documentação, imports de arquivos e library's
+*** Settings ***
 Documentation       Arquivo de Testes para o Endpoint /produtos
-Resource            ../keywords/produtos_keywords.robot
+Resource            ../keywords/02_produtos_keywords.robot
+Resource            ../support/base.robot
 
 Suite Setup         Criar Sessao
 
-# Sessão para criação dos cenarios de teste
-* Test Cases *
+### Sessão para criação dos cenarios de teste
+*** Test Cases ***
+###--------------------Cenários GET Endpoint /produtos--------------------###
 Cenário: GET Listar Todos os Produtos 200
     [tags]      GET_PRODUTO
     GET Endpoint /produtos
     Validar Status Code "200"
 
+Cenário: GET Listar Produto Especifico 200
+    [tags]      GET_PRODUTO_ID
+    GET Endpoint /produtos Especifico 
+    Validar Status Code "200"
+
+Cenário: GET Produto Invalido 400
+    [tags]      GET_PRODUTO_INVALIDO
+    GET Endpoint /produtos Invalido
+    Validar Status Code "400"
+
+###--------------------Cenários POST Endpoint /produtos--------------------###
 Cenário: POST Criar Produto 201
-    [tags]      POST_PRODUTO
+    [tags]      POST_PRODUTO_ADM
     Fazer Login e Armazenar Token
+    Criar Dados Produto Valido
     POST Endpoint /produtos
     Validar Status Code "201"
 
+Cenário: POST Criar Produto Existente 400
+    [tags]      POST_PRODUTO_EXISTENTE
+    Fazer Login e Armazenar Token
+    POST Endpoint /produtos Existente
+    Validar Status Code "400"
+
+Cenário: POST Criar Produto Erro TOKEN 401
+    [tags]      POST_PRODUTO_TOKEN
+    Fazer Login e Armazenar Token
+    Criar Dados Produto Valido
+    POST Endpoint /produtos TOKEN
+    Validar Status Code "401"
+
+Cenário: POST Criar Produto Rota Exclusiva 403
+    [tags]      POST_PRODUTO
+    Fazer Login e Armazenar Token Nao Administrador
+    Criar Dados Produto Valido
+    POST Endpoint /produtos Rota Exclusiva para Administradores
+    Validar Status Code "403"
+
+###--------------------Cenários PUT Endpoint /produtos--------------------###
+Cenário: PUT Editar Produto 200
+    [tags]      PUT_PRODUTO
+    Fazer Login e Armazenar Token
+    Encontrar ID de um Produto Cadastrado
+    Criar Dados Produto Valido
+    PUT Endpoint /produtos
+    Validar Status Code "200"
+
+Cenário: PUT Editar Produto Token Ausente, Invalido ou Expirado 401
+    [tags]      PUT_PRODUTO_TOKEN
+    Fazer Login e Armazenar Token
+    Encontrar ID de um Produto Cadastrado
+    Criar Dados Produto Valido
+    PUT Endpoint /produtos Token Invalido
+    Validar Status Code "401"
+
+###--------------------Cenários DELETE Endpoint /produtos--------------------###
 Cenário: DELETE Excluir Produto 200
     [tags]      DELETE_PRODUTO
     Fazer Login e Armazenar Token
-    Criar Um Produto e Armazenar ID
+    Encontrar ID de um Produto Cadastrado
     DELETE Endpoint /produtos
     Validar Status Code "200"

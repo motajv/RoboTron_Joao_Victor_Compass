@@ -1,12 +1,12 @@
-* Settings *
+*** Settings ***
 Documentation       Keywords e Variáveis para ações do Endpoint de Carrinhos
 Resource            ../support/base.robot
 
-* Variables *
+*** Variables ***
 ${quantidade}       1
 
 
-* Keywords *
+*** Keywords ***
 GET Endpoint /carrinhos
     ${response}             GET On Session      serverest   /carrinhos
     Log to Console          Response: ${response.content}
@@ -18,24 +18,27 @@ GET Endpoint /carrinhos/${id_carrinho}
     Set Global Variable     ${response}
 
 POST Endpoint /carrinhos
-    [Arguments]             ${token_auth}
     &{header}               Create Dictionary    Authorization=${token_auth}
     ${response}             POST On Session      serverest   /carrinhos    json=&{json}     headers=${header}        expected_status=any
     Log to Console          Response: ${response.content}
     Set Global Variable     ${response}
 
+POST Endpoint /carrinhos Algo Deu Errado
+    &{header}               Create Dictionary    Authorization=${token_auth}
+    ${response}             POST On Session      serverest   /carrinhos    json=&{json}     headers=${header}        expected_status=400
+    Log to Console          Response: ${response.content}
+    Set Global Variable     ${response}
+
 DELETE Endpoint /carrinhos
-    [Arguments]             ${tipo_compra}   ${token_auth}
     &{header}               Create Dictionary    Authorization=${token_auth}
     ${response}             DELETE On Session      serverest   /carrinhos/${tipo_compra}      headers=${header}        expected_status=any
     Log to Console          Response: ${response.content}
     Set Global Variable     ${response}
 
 Adicionar um Produto ao Carrinho
-    Encontrar ID de um Produto Cadastrado
-    ${json}         Convert String to JSON      {"produtos": []}
-    ${payload}              Create Dictionary   idProduto=${id_produto}   quantidade=${quantidade}
-    ${json}         Add Object To Json	        ${json}	    $..produtos	    ${payload}
+    ${json}             Convert String to JSON      {"produtos": []}
+    ${payload}          Create Dictionary           idProduto=${id_produto}   quantidade=${quantidade}
+    ${json}             Add Object To Json	        ${json}	    $..produtos	    ${payload}
     Set Global Variable     ${json}
 
 Validar Ter Criado Carrinho

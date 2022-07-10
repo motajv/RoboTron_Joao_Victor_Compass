@@ -1,63 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0.1 (Python 3.10.4 on linux)" generated="20220707 05:41:45.970" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0.1 (Python 3.10.4 on linux)" generated="20220709 10:24:51.838" rpa="false" schemaversion="3">
 <suite id="s1" name="Python Func" source="/home/mota/Documentos/Compass/Sprint's/GitHub/RoboTron_Joao_Victor_Compass/Sprint 5: Tech/Challenge/ServeRest Tester/support/python_func/python_func.robot">
-<test id="s1-t1" name="Cenário: Apresentar Quantidade de Produtos Cadastrados" line="6">
-<kw name="Apresentar Quantidade De Produtos Cadastrados" library="python_func">
-<var>${produtos}</var>
-<msg timestamp="20220707 05:41:46.089" level="INFO">${produtos} = 2</msg>
-<status status="PASS" starttime="20220707 05:41:46.077" endtime="20220707 05:41:46.089"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${produtos}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220707 05:41:46.089" endtime="20220707 05:41:46.090"/>
-</kw>
-<tag>FUNCTION_PRODUTOS</tag>
-<status status="PASS" starttime="20220707 05:41:46.077" endtime="20220707 05:41:46.090"/>
-</test>
-<test id="s1-t2" name="Cenário: Criar Usuarios Para Teste de Carga" line="11">
+<test id="s1-t1" name="Cenário: Criar Usuarios Para Teste de Carga" line="11">
 <kw name="Criar Usuarios Para Teste De Carga" library="python_func">
 <var>${usuarios}</var>
 <arg>${10}</arg>
-<msg timestamp="20220707 05:41:46.133" level="INFO">${usuarios} = [{'message': 'Cadastro realizado com sucesso', '_id': 'KNOXv0rWRbFFwkbW'}, {'message': 'Cadastro realizado com sucesso', '_id': 'FgFMkBgWyZpAgmMn'}, {'message': 'Cadastro realizado com sucesso', '_id'...</msg>
-<status status="PASS" starttime="20220707 05:41:46.090" endtime="20220707 05:41:46.133"/>
+<msg timestamp="20220709 10:24:51.952" level="INFO">${usuarios} = [{'message': 'Cadastro realizado com sucesso', '_id': 'ZrJPUEE9QNTSMWEb'}, {'message': 'Cadastro realizado com sucesso', '_id': 'QLY9VoHBtFq1NV62'}, {'message': 'Cadastro realizado com sucesso', '_id'...</msg>
+<status status="PASS" starttime="20220709 10:24:51.919" endtime="20220709 10:24:51.952"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>${usuarios}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220707 05:41:46.134" endtime="20220707 05:41:46.134"/>
+<status status="PASS" starttime="20220709 10:24:51.952" endtime="20220709 10:24:51.952"/>
 </kw>
 <tag>FUNCTION_CARGA</tag>
-<status status="PASS" starttime="20220707 05:41:46.090" endtime="20220707 05:41:46.134"/>
-</test>
-<test id="s1-t3" name="Cenário: Apresentar Quantidade de Usuarios Cadastrados" line="16">
-<kw name="Apresentar Quantidade De Usuarios Cadastrados" library="python_func">
-<var>${usuarios}</var>
-<msg timestamp="20220707 05:41:46.137" level="INFO">${usuarios} = 11</msg>
-<status status="PASS" starttime="20220707 05:41:46.134" endtime="20220707 05:41:46.137"/>
-</kw>
-<kw name="Log To Console" library="BuiltIn">
-<arg>${usuarios}</arg>
-<doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20220707 05:41:46.137" endtime="20220707 05:41:46.138"/>
-</kw>
-<tag>FUNCTION_USUARIOS</tag>
-<status status="PASS" starttime="20220707 05:41:46.134" endtime="20220707 05:41:46.138"/>
+<status status="PASS" starttime="20220709 10:24:51.919" endtime="20220709 10:24:51.953"/>
 </test>
 <doc>Arquivo de Testes para Library PYTHON</doc>
-<status status="PASS" starttime="20220707 05:41:45.971" endtime="20220707 05:41:46.138"/>
+<status status="PASS" starttime="20220709 10:24:51.839" endtime="20220709 10:24:51.953"/>
 </suite>
 <statistics>
 <total>
-<stat pass="3" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 <stat pass="1" fail="0" skip="0">FUNCTION_CARGA</stat>
-<stat pass="1" fail="0" skip="0">FUNCTION_PRODUTOS</stat>
-<stat pass="1" fail="0" skip="0">FUNCTION_USUARIOS</stat>
 </tag>
 <suite>
-<stat pass="3" fail="0" skip="0" id="s1" name="Python Func">Python Func</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Python Func">Python Func</stat>
 </suite>
 </statistics>
 <errors>

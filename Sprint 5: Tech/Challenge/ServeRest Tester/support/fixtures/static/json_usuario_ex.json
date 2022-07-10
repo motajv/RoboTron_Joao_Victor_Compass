@@ -1,8 +1,8 @@
 {
-    "user_valido_nao_administrador":{
-        "nome": "Cebolinha",
-        "email": "cebolinha@nba.com",
-        "password": "nba123",
+    "user_valido":{
+        "nome": "João Victor",
+        "email": "jvlimamota@gmail.com",
+        "password": "qa2022",
         "administrador": "false"
     },
     "user_invalido":{
