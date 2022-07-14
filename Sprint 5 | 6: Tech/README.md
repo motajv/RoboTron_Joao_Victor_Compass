@@ -66,6 +66,12 @@ url http://localhost:3000
   ```sh
   robot -d ./reports_carrinhos 03_carrinhos_tests.robot
   ```
+- Execução de teste de carga em ambiente local:
+  - Para teste de [carga](https://github.com/motajv/RoboTron_Joao_Victor_Compass/blob/main/Sprint%205%20%7C%206:%20Tech/Challenge/ServeRest%20Tester/support/python_func/python_func.robot):
+  ```sh
+    robot -d ./reports_carga python_func.robot
+  ```
+  - [Monitoramento de Status - ServeRest Local](http://localhost:3000/status)
   
 ## Resultado dos testes
 
