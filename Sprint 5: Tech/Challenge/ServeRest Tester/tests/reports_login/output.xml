@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.4 on linux)" generated="20220714 08:33:25.571" rpa="false" schemaversion="3">
+<suite id="s1" name="00 Login Tests" source="/home/mota/Documentos/Compass/Sprint's/GitHub/RoboTron_Joao_Victor_Compass/Sprint 5: Tech/Challenge/ServeRest Tester/tests/00_login_tests.robot">
+<kw name="Criar Sessao" library="common" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>${BASE_URI}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220714 08:33:25.775" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220714 08:33:25.774" endtime="20220714 08:33:25.775"/>
+</kw>
+<status status="PASS" starttime="20220714 08:33:25.774" endtime="20220714 08:33:25.775"/>
+</kw>
+<test id="s1-t1" name="Cenário: POST Realizar login 200" line="11">
+<kw name="POST Endpoint /login" library="00_login_keywords">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>email=${email_para_login_adm}</arg>
+<arg>password=${senha_para_login_adm}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220714 08:33:25.776" level="INFO">&amp;{payload} = { email=fulano@qa.com | password=nba123 }</msg>
+<status status="PASS" starttime="20220714 08:33:25.775" endtime="20220714 08:33:25.776"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>data=&amp;{payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220714 08:33:25.779" level="INFO">POST Request : url=http://localhost:3000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '37', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=email=fulano%40qa.com&amp;password=nba123 
+ </msg>
+<msg timestamp="20220714 08:33:25.779" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'a526d6d8-cc17-46fb-9ea1-334490355148', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '267', 'Date': 'Thu, 14 Jul 2022 11:33:25 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZ1bGFub0BxYS5jb20iLCJwYXNzd29yZCI6Im5iYTEyMyIsImlhdCI6MTY1Nzc5ODQwNSwiZXhwIjoxNjU3Nzk5MDA1fQ.0J1ajX5S_MfaEtv9cOMdoVzBdfeNZScnvkrX3ExfNPE"
+} 
+ </msg>
+<msg timestamp="20220714 08:33:25.780" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220714 08:33:25.776" endtime="20220714 08:33:25.780"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220714 08:33:25.780" endtime="20220714 08:33:25.780"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220714 08:33:25.780" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220714 08:33:25.780" endtime="20220714 08:33:25.780"/>
+</kw>
+<status status="PASS" starttime="20220714 08:33:25.775" endtime="20220714 08:33:25.780"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220714 08:33:25.781" endtime="20220714 08:33:25.781"/>
+</kw>
+<status status="PASS" starttime="20220714 08:33:25.781" endtime="20220714 08:33:25.781"/>
+</kw>
+<tag>POST_LOGIN_ADM</tag>
+<status status="PASS" starttime="20220714 08:33:25.775" endtime="20220714 08:33:25.781"/>
+</test>
+<test id="s1-t2" name="Cenário: POST Realizar login Nao Administrador 200" line="16">
+<kw name="POST Endpoint /login Nao Administrador" library="00_login_keywords">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>email=${email_para_login}</arg>
+<arg>password=${senha_para_login}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220714 08:33:25.782" level="INFO">&amp;{payload} = { email=anthony95@example.com | password=aCc1Wnkq78 }</msg>
+<status status="PASS" starttime="20220714 08:33:25.782" endtime="20220714 08:33:25.782"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>data=&amp;{payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220714 08:33:25.785" level="INFO">POST Request : url=http://localhost:3000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '49', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=email=anthony95%40example.com&amp;password=aCc1Wnkq78 
+ </msg>
+<msg timestamp="20220714 08:33:25.785" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=200, reason=OK 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '373c65df-1722-43db-abf0-25fbe4760463', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '283', 'Date': 'Thu, 14 Jul 2022 11:33:25 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Login realizado com sucesso",
+    "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudGhvbnk5NUBleGFtcGxlLmNvbSIsInBhc3N3b3JkIjoiYUNjMVdua3E3OCIsImlhdCI6MTY1Nzc5ODQwNSwiZXhwIjoxNjU3Nzk5MDA1fQ.RGsWds09oYk_LqxetOBXhTE2avmlOwU4KEu8jURg6ZQ"
+} 
+ </msg>
+<msg timestamp="20220714 08:33:25.785" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220714 08:33:25.782" endtime="20220714 08:33:25.785"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220714 08:33:25.785" endtime="20220714 08:33:25.785"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220714 08:33:25.786" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220714 08:33:25.786" endtime="20220714 08:33:25.786"/>
+</kw>
+<status status="PASS" starttime="20220714 08:33:25.782" endtime="20220714 08:33:25.786"/>
+</kw>
+<kw name="Validar Status Code &quot;200&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220714 08:33:25.786" endtime="20220714 08:33:25.787"/>
+</kw>
+<status status="PASS" starttime="20220714 08:33:25.786" endtime="20220714 08:33:25.787"/>
+</kw>
+<tag>POST_LOGIN</tag>
+<status status="PASS" starttime="20220714 08:33:25.782" endtime="20220714 08:33:25.787"/>
+</test>
+<test id="s1-t3" name="Cenário: POST Endpoint /login E-mail/Senha Invalido 400" line="21">
+<kw name="POST Endpoint /login E-mail/Senha Invalido" library="00_login_keywords">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>email=${email_para_login}</arg>
+<arg>password=123teste</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220714 08:33:25.788" level="INFO">&amp;{payload} = { email=anthony95@example.com | password=123teste }</msg>
+<status status="PASS" starttime="20220714 08:33:25.788" endtime="20220714 08:33:25.788"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>data=&amp;{payload}</arg>
+<arg>expected_status=401</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220714 08:33:25.790" level="INFO">POST Request : url=http://localhost:3000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '47', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=email=anthony95%40example.com&amp;password=123teste 
+ </msg>
+<msg timestamp="20220714 08:33:25.790" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=401, reason=Unauthorized 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '31736a8e-5217-4c74-9a18-1190bb8a796b', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '48', 'Date': 'Thu, 14 Jul 2022 11:33:25 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Email e/ou senha inválidos"
+} 
+ </msg>
+<msg timestamp="20220714 08:33:25.790" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220714 08:33:25.788" endtime="20220714 08:33:25.790"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220714 08:33:25.791" endtime="20220714 08:33:25.791"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220714 08:33:25.791" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<status status="PASS" starttime="20220714 08:33:25.791" endtime="20220714 08:33:25.791"/>
+</kw>
+<status status="PASS" starttime="20220714 08:33:25.787" endtime="20220714 08:33:25.791"/>
+</kw>
+<kw name="Validar Status Code &quot;401&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220714 08:33:25.792" endtime="20220714 08:33:25.792"/>
+</kw>
+<status status="PASS" starttime="20220714 08:33:25.791" endtime="20220714 08:33:25.792"/>
+</kw>
+<tag>POST_LOGIN_INVALIDO</tag>
+<status status="PASS" starttime="20220714 08:33:25.787" endtime="20220714 08:33:25.792"/>
+</test>
+<test id="s1-t4" name="Cenário: POST Endpoint /login E-mail/Senha Campos em Branco 400" line="26">
+<kw name="POST POST Endpoint /login E-mail/Senha Campo em Branco" library="00_login_keywords">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>&amp;{payload}</var>
+<arg>email=${email_para_login}</arg>
+<arg>password=</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220714 08:33:25.793" level="INFO">&amp;{payload} = { email=anthony95@example.com | password= }</msg>
+<status status="PASS" starttime="20220714 08:33:25.793" endtime="20220714 08:33:25.793"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/login</arg>
+<arg>data=&amp;{payload}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220714 08:33:25.797" level="INFO">POST Request : url=http://localhost:3000/login 
+ path_url=/login 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '39', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=email=anthony95%40example.com&amp;password= 
+ </msg>
+<msg timestamp="20220714 08:33:25.797" level="INFO">POST Response : url=http://localhost:3000/login 
+ status=400, reason=Bad Request 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': '5178000e-0225-4874-ac7c-3a18f2cc4cdc', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '56', 'Date': 'Thu, 14 Jul 2022 11:33:25 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "password": "password não pode ficar em branco"
+} 
+ </msg>
+<msg timestamp="20220714 08:33:25.797" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220714 08:33:25.793" endtime="20220714 08:33:25.797"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220714 08:33:25.797" endtime="20220714 08:33:25.797"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220714 08:33:25.798" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220714 08:33:25.797" endtime="20220714 08:33:25.798"/>
+</kw>
+<status status="PASS" starttime="20220714 08:33:25.793" endtime="20220714 08:33:25.798"/>
+</kw>
+<kw name="Validar Status Code &quot;400&quot;" library="common" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220714 08:33:25.798" endtime="20220714 08:33:25.799"/>
+</kw>
+<status status="PASS" starttime="20220714 08:33:25.798" endtime="20220714 08:33:25.799"/>
+</kw>
+<tag>POST_LOGIN_BRANCO</tag>
+<status status="PASS" starttime="20220714 08:33:25.793" endtime="20220714 08:33:25.799"/>
+</test>
+<doc>Arquivo de Testes para o Endpoint /login</doc>
+<status status="PASS" starttime="20220714 08:33:25.572" endtime="20220714 08:33:25.799"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">POST_LOGIN</stat>
+<stat pass="1" fail="0" skip="0">POST_LOGIN_ADM</stat>
+<stat pass="1" fail="0" skip="0">POST_LOGIN_BRANCO</stat>
+<stat pass="1" fail="0" skip="0">POST_LOGIN_INVALIDO</stat>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="00 Login Tests">00 Login Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

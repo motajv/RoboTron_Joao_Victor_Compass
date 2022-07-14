@@ -1,0 +1,32 @@
+{
+    "user_valido":{
+        "nome": "Vitoria Dias",
+        "email": "vitoriad@gmail.com",
+        "password": "qa2022",
+        "administrador": "false"
+    },
+    "user_valido_email":{
+        "nome": "Marcos Vinicius",
+        "email": "mv@gmail.com",
+        "password": "qa2022",
+        "administrador": "false"
+    },
+    "user_invalido":{
+        "nome": "Francisco Fulano",
+        "email": "fulano@qa.com",
+        "password": "nba123",
+        "administrador": "true"
+    },
+    "user_sem_senha":{
+        "nome": "Stephen Curry",
+        "email": "curry@nba.com",
+        "password": "",
+        "administrador": "true"
+    },
+    "user_sem_email":{
+        "nome": "Kawhi James",
+        "email": "",
+        "password": "nba123",
+        "administrador": "true"
+    }
+}

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.4 on linux)" generated="20220701 04:46:22.241" rpa="false" schemaversion="3">
+<suite id="s1" name="Estatico Teste" source="/home/mota/Documentos/Compass/Sprint's/GitHub/RoboTron_Joao_Victor_Compass/Sprint 5: Tech/MasterClass/estatico_teste.robot">
+<kw name="Criar Sessao" type="SETUP">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>serverest</arg>
+<arg>${BASE_URI}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220701 04:46:22.412" level="INFO">Creating Session using : alias=serverest, url=http://localhost:3000/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220701 04:46:22.411" endtime="20220701 04:46:22.412"/>
+</kw>
+<status status="PASS" starttime="20220701 04:46:22.411" endtime="20220701 04:46:22.412"/>
+</kw>
+<test id="s1-t1" name="Cenario: POST Cadastrar Usuario Email Utilizado 400" line="16">
+<kw name="Pegar Dados Usuario Estatico Invalido">
+<kw name="Importar JSON Estatico">
+<var>${json}</var>
+<arg>json_usuario_ex.json</arg>
+<kw name="Get File" library="OperatingSystem">
+<var>${arquivo}</var>
+<arg>${EXECDIR}/${nome_arquivo}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20220701 04:46:22.413" level="INFO" html="true">Getting file '&lt;a href="file:///home/mota/Documentos/Compass/Sprint's/GitHub/RoboTron_Joao_Victor_Compass/Sprint 5: Tech/MasterClass/json_usuario_ex.json"&gt;/home/mota/Documentos/Compass/Sprint's/GitHub/RoboTron_Joao_Victor_Compass/Sprint 5: Tech/MasterClass/json_usuario_ex.json&lt;/a&gt;'.</msg>
+<msg timestamp="20220701 04:46:22.413" level="INFO">${arquivo} = {
+    "user_valido":{
+        "nome": "Kawhi Leonard",
+        "email": "leonard@nba.com",
+        "password": "nba123",
+        "administrador": "true"
+    },
+    "user_invalido":{
+        "nome": "J...</msg>
+<status status="PASS" starttime="20220701 04:46:22.413" endtime="20220701 04:46:22.413"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${data}</var>
+<arg>json.loads('''${arquivo}''')</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220701 04:46:22.413" level="INFO">${data} = {'user_valido': {'nome': 'Kawhi Leonard', 'email': 'leonard@nba.com', 'password': 'nba123', 'administrador': 'true'}, 'user_invalido': {'nome': 'Jason Tatum', 'email': 'fulano@qa.com', 'password': 'nb...</msg>
+<status status="PASS" starttime="20220701 04:46:22.413" endtime="20220701 04:46:22.413"/>
+</kw>
+<msg timestamp="20220701 04:46:22.413" level="INFO">${json} = {'user_valido': {'nome': 'Kawhi Leonard', 'email': 'leonard@nba.com', 'password': 'nba123', 'administrador': 'true'}, 'user_invalido': {'nome': 'Jason Tatum', 'email': 'fulano@qa.com', 'password': 'nb...</msg>
+<status status="PASS" starttime="20220701 04:46:22.412" endtime="20220701 04:46:22.413"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${payload}</var>
+<arg>${json["user_invalido"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220701 04:46:22.414" level="INFO">${payload} = {'nome': 'Jason Tatum', 'email': 'fulano@qa.com', 'password': 'nba123', 'administrador': 'true'}</msg>
+<status status="PASS" starttime="20220701 04:46:22.413" endtime="20220701 04:46:22.414"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${payload}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220701 04:46:22.414" level="INFO">${payload} = {'nome': 'Jason Tatum', 'email': 'fulano@qa.com', 'password': 'nba123', 'administrador': 'true'}</msg>
+<status status="PASS" starttime="20220701 04:46:22.414" endtime="20220701 04:46:22.414"/>
+</kw>
+<status status="PASS" starttime="20220701 04:46:22.412" endtime="20220701 04:46:22.414"/>
+</kw>
+<kw name="POST Endpoint /usuarios">
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>serverest</arg>
+<arg>/usuarios</arg>
+<arg>json=&amp;{payload}</arg>
+<arg>expected_status=400</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20220701 04:46:22.418" level="INFO">POST Request : url=http://localhost:3000/usuarios 
+ path_url=/usuarios 
+ headers={'User-Agent': 'python-requests/2.25.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '96', 'Content-Type': 'application/json'} 
+ body=b'{"nome": "Jason Tatum", "email": "fulano@qa.com", "password": "nba123", "administrador": "true"}' 
+ </msg>
+<msg timestamp="20220701 04:46:22.418" level="INFO">POST Response : url=http://localhost:3000/usuarios 
+ status=400, reason=Bad Request 
+ headers={'Access-Control-Allow-Origin': '*', 'x-dns-prefetch-control': 'off', 'x-frame-options': 'SAMEORIGIN', 'strict-transport-security': 'max-age=15552000; includeSubDomains', 'x-download-options': 'noopen', 'x-content-type-options': 'nosniff', 'x-xss-protection': '1; mode=block', 'x-moesif-transaction-id': 'b462f9e2-9f58-46c0-b824-34d1f6d73941', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '53', 'Date': 'Fri, 01 Jul 2022 07:46:22 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={
+    "message": "Este email já está sendo usado"
+} 
+ </msg>
+<msg timestamp="20220701 04:46:22.418" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220701 04:46:22.414" endtime="20220701 04:46:22.418"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response: ${response.content}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220701 04:46:22.418" endtime="20220701 04:46:22.418"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${response}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220701 04:46:22.419" level="INFO">${response} = &lt;Response [400]&gt;</msg>
+<status status="PASS" starttime="20220701 04:46:22.419" endtime="20220701 04:46:22.419"/>
+</kw>
+<status status="PASS" starttime="20220701 04:46:22.414" endtime="20220701 04:46:22.419"/>
+</kw>
+<kw name="Validar Status Code &quot;400&quot;" sourcename="Validar Status Code &quot;${statuscode}&quot;">
+<kw name="Should Be True" library="BuiltIn">
+<arg>${response.status_code} == ${statuscode}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220701 04:46:22.419" endtime="20220701 04:46:22.420"/>
+</kw>
+<status status="PASS" starttime="20220701 04:46:22.419" endtime="20220701 04:46:22.420"/>
+</kw>
+<tag>POST_USER_EMAIL</tag>
+<status status="PASS" starttime="20220701 04:46:22.412" endtime="20220701 04:46:22.420"/>
+</test>
+<doc>Arquivo de Testes para o Endpoint /usuarios</doc>
+<status status="PASS" starttime="20220701 04:46:22.241" endtime="20220701 04:46:22.420"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">POST_USER_EMAIL</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Estatico Teste">Estatico Teste</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
