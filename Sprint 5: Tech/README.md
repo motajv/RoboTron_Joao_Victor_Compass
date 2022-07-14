@@ -1,11 +1,10 @@
 <h1 align="center">Teste de API - ServeRest</h1>
- 
+
+<h1 align="center">:shopping_cart: https://serverest.dev/</h1>
+
 > O presente código apresenta a automação de testes para as validações de cobertura referente a API ServeRest, uma API Rest gratuita que simula uma loja virtual com intuito de servir como material de estudos de testes de API.
 
 > Alertamos que não é permitido a exclusão ou alteração dos arquivos atuais, apenas sua complementação, através da criação de novos cenários.
- 
-
-:shopping_cart: https://serverest.dev/
 
 ## Consumindo o ServeRest Localmente
 ### Localmente com NPM
@@ -30,7 +29,7 @@ url http://localhost:3000
 - :heavy_check_mark: /carrinhos
 
 
-## Requisitos para a Criação de Códigos de Automação
+## Requisitos para a criação de códigos de automação
 
 - Instalar o Python
 - Instalar o driver do navegador e adicionar ao path nas variáveis de ambiente do sistema
