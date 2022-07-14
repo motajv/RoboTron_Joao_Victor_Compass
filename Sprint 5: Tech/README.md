@@ -1,6 +1,8 @@
 ## ServeRest API
-
-O ServeRest é uma API REST que simula uma loja virtual para servir de material de estudos de testes de API
+ 
+O presente código apresenta a automação de testes para as validações de cobertura referente a API ServeRest, uma API Rest gratuita que simula uma loja virtual com intuito de servir como material de estudos de testes de API.
+Alertamos que não é permitido a exclusão ou alteração dos arquivos atuais, apenas sua complementação, através da criação de novos cenários.
+ 
 
 :shopping_cart: https://serverest.dev/
 
@@ -12,11 +14,11 @@ O ServeRest é uma API REST que simula uma loja virtual para servir de material 
 - :heavy_check_mark: Carrinhos
 
 
-## Instalação
+## Instalações
 
 - Instalar o Python
 - Instalar o driver do navegador e adicionar ao path nas variáveis de ambiente do sistema
-- Instalar as dependências do Robot Framework: `python -m pip install -r requirements.txt`
+- Instalar o Robot Framework: pip install robotframework
 
 
 ## Libraries externas utilizadas
@@ -27,9 +29,12 @@ O ServeRest é uma API REST que simula uma loja virtual para servir de material 
 
 ## Execução dos testes
 
-- Executar no terminal: `robot -d ./report_base -i [tag] base.robot`
-
+- Executar no terminal dentro do diretório "tests" os arquivos: 
+    Para teste de login: robot -d ./reports_login 00_login_tests.robot;
+    Para teste de usuários: robot -d ./reports_usuarios 01_usuarios_tests.robot
+    Para teste de produtos: robot -d ./reports_produtos 02_produtos_tests.robot
+    Para teste de carrinhos: robot -d ./reports_carrinhos 03_carrinhos_tests.robot
 
 ## Resultado dos testes
 
-- Acessar o arquivo *log.html* na pasta *report_base*
+- Acessar o arquivo *log.html* na pasta *report* referente ao teste executado.
