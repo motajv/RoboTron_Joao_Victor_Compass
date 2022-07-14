@@ -50,19 +50,19 @@ url http://localhost:3000
 
 - Executar no terminal dentro do diretório "tests" os arquivos: 
 
-  - Para teste de [login](https://github.com/motajv/RoboTron_Joao_Victor_Compass/blob/robot/Sprint%205:%20Tech/Challenge/ServeRest%20Tester/tests/00_login_tests.robot): 
+  - Para teste de [login](https://github.com/motajv/RoboTron_Joao_Victor_Compass/blob/main/Sprint%205%20%7C%206:%20Tech/Challenge/ServeRest%20Tester/tests/00_login_tests.robot): 
   ```sh
   robot -d ./reports_login 00_login_tests.robot
   ```
-  - Para teste de [usuários](https://github.com/motajv/RoboTron_Joao_Victor_Compass/blob/robot/Sprint%205:%20Tech/Challenge/ServeRest%20Tester/tests/01_usuarios_tests.robot): 
+  - Para teste de [usuários](https://github.com/motajv/RoboTron_Joao_Victor_Compass/blob/main/Sprint%205%20%7C%206:%20Tech/Challenge/ServeRest%20Tester/tests/01_usuarios_tests.robot): 
   ```sh
   robot -d ./reports_usuarios 01_usuarios_tests.robot
   ```
-  - Para teste de [produtos](https://github.com/motajv/RoboTron_Joao_Victor_Compass/blob/robot/Sprint%205:%20Tech/Challenge/ServeRest%20Tester/tests/02_produtos_tests.robot):
+  - Para teste de [produtos](https://github.com/motajv/RoboTron_Joao_Victor_Compass/blob/main/Sprint%205%20%7C%206:%20Tech/Challenge/ServeRest%20Tester/tests/02_produtos_tests.robot):
   ```sh
   robot -d ./reports_produtos 02_produtos_tests.robot
   ```
-  - Para teste de [carrinhos](https://github.com/motajv/RoboTron_Joao_Victor_Compass/blob/robot/Sprint%205:%20Tech/Challenge/ServeRest%20Tester/tests/03_carrinhos_tests.robot):
+  - Para teste de [carrinhos](https://github.com/motajv/RoboTron_Joao_Victor_Compass/blob/main/Sprint%205%20%7C%206:%20Tech/Challenge/ServeRest%20Tester/tests/03_carrinhos_tests.robot):
   ```sh
   robot -d ./reports_carrinhos 03_carrinhos_tests.robot
   ```
