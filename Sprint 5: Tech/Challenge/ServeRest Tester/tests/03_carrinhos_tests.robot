@@ -35,6 +35,16 @@ Cenario: POST Criar Carrinho 201
     Validar Status Code "201"
     Validar Ter Criado Carrinho
 
+Cenario: POST Criar Carrinho 201
+    [tags]     POST_CARRINHO_ADM                    
+    Fazer Login e Armazenar Token
+    Criar Dados Produto Valido
+    Encontrar ID de um Produto Cadastrado
+    Adicionar um Produto ao Carrinho
+    POST Endpoint /carrinhos
+    Validar Status Code "201"
+    Validar Ter Criado Carrinho
+
 Cenario: POST Criar Carrinho Invalido 400
     [tags]     POST_CARRINHO_DUPLICADO                     
     Fazer Login e Armazenar Token
@@ -58,25 +68,25 @@ Cenario: DELETE Excluir Carrinho Concluir Compra Com Carrinho 200
     Fazer Login e Armazenar Token Nao Administrador
     DELETE Endpoint /carrinhos Concluir Compra
     Validar Status Code "200"
-    Validar a Mensagem "Registro excluído com sucesso"
+    Validar Se Mensagem Contem "Registro excluído com sucesso."
 
 Cenario: DELETE Excluir Carrinho Cancelar Compra Com Carrinho 200
     [tags]     DELETE_CANCELAR     
     Fazer Login e Armazenar Token
     DELETE Endpoint /carrinhos Cancelar Compra
     Validar Status Code "200"
-    Validar a Mensagem "Registro excluído com sucesso. Estoque dos produtos reabastecido"
+    Validar Se Mensagem Contem "Registro excluído com sucesso."
 
 Cenario: DELETE Excluir Carrinho Concluir Compra Com Carrinho Erro Token 401
     [tags]     DELETE_CONCLUIR_TOKEN
     Fazer Login e Armazenar Token Nao Administrador
     DELETE Endpoint /carrinhos Concluir Compra Erro Token
     Validar Status Code "401"
-    Validar a Mensagem "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+    Validar Se Mensagem Contem "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
 
 Cenario: DELETE Excluir Carrinho Cancelar Compra Com Carrinho Erro Token 401
     [tags]     DELETE_CANCELAR_TOKEN
     Fazer Login e Armazenar Token
     DELETE Endpoint /carrinhos Concluir Compra Erro Token
     Validar Status Code "401"
-    Validar a Mensagem "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"
+    Validar Se Mensagem Contem "Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"

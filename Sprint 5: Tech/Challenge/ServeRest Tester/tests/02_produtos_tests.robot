@@ -61,8 +61,6 @@ Cenário: PUT Editar Produto 200
     PUT Endpoint /produtos
     Validar Status Code "200"
 
-Cenário: PUT Cadastrar Produto 201
-
 Cenário: PUT Editar Produto Nome Existente 400
     [tags]       PUT_PRODUTO_EXISTENTE
     Fazer Login e Armazenar Token
@@ -97,8 +95,7 @@ Cenário: DELETE Excluir Produto 200
 Cenário: DELETE Excluir Produto Carrinho 400
     [tags]      DELETE_PRODUTO_CARRINHO
     Fazer Login e Armazenar Token
-    Encontrar ID de um Produto Cadastrado
-    DELETE Endpoint /produtos
+    DELETE Endpoint /produtos Carrinho
     Validar Status Code "400"
 
 Cenário: DELETE Excluir Produto Token Invalido 401
@@ -111,6 +108,5 @@ Cenário: DELETE Excluir Produto Token Invalido 401
 Cenário: DELETE Excluir Produto Rota Exclusiva 403
     [tags]      DELETE_PRODUTO
     Fazer Login e Armazenar Token Nao Administrador
-    Criar Um Produto e Armazenar ID
     DELETE Endpoint /produtos Rota Exclusiva para Administradores
     Validar Status Code "403"

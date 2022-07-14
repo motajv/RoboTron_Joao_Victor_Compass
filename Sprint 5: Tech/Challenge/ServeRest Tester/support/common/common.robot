@@ -15,9 +15,6 @@ Importar JSON Estatico
     ${data}                 Evaluate        	json.loads('''${arquivo}''')     	json
     [return]                ${data}
 
-Validar a Mensagem "${mensagem}"
-    Should Be Equal         ${response.json()["message"]}   ${mensagem}
-
 Validar Se Mensagem Contem "${palavra}"
     Should Contain          ${response.json()["message"]}           ${palavra}
 

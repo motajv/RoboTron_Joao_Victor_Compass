@@ -65,7 +65,7 @@ Cenário: POST Cadastrar Usuario Email Utilizado 400
     Pegar Dados user_invalido Estatico            
     POST Endpoint /usuarios Invalido 
     Validar Status Code "400"
-    Validar a Mensagem "Este email já está sendo usado"
+    Validar Se Mensagem Contem "Este email já está sendo usado"
 
 ###--------------------CT04 - Validar edição de usuários--------------------###
 Cenário: PUT Editar Usuario 200
@@ -78,8 +78,7 @@ Cenário: PUT Editar Usuario 200
 Cenário: PUT Cadastrar Usuario 201
     [tags]      PUT_USUARIO_CADASTRAR
     Criar Dados Usuario Valido
-    POST Endpoint /usuarios
-    PUT Endpoint /usuarios
+    PUT Endpoint /usuarios Cadastrado
     Validar Status Code "201"
 
 Cenário: PUT Email Cadastrado 400

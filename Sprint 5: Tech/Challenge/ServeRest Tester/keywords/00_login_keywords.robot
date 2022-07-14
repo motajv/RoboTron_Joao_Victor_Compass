@@ -27,7 +27,7 @@ POST Endpoint /login Nao Administrador
 
 POST Endpoint /login E-mail/Senha Invalido
     &{payload}               Create Dictionary          email=${email_para_login}           password=123teste
-    ${response}              POST On Session            serverest             /login        data=&{payload}         expected_status=401
+    ${response}              POST On Session            serverest             /login        data=&{payload}         expected_status=400
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 

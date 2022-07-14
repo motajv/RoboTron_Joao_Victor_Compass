@@ -21,7 +21,7 @@ Cenário: POST Realizar login Nao Administrador 200
 Cenário: POST Endpoint /login E-mail/Senha Invalido 400
     [tags]      POST_LOGIN_INVALIDO
     POST Endpoint /login E-mail/Senha Invalido
-    Validar Status Code "401"
+    Validar Status Code "400"
 
 Cenário: POST Endpoint /login E-mail/Senha Campos em Branco 400
     [tags]      POST_LOGIN_BRANCO

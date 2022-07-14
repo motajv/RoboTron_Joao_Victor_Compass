@@ -48,6 +48,11 @@ PUT Endpoint /usuarios
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 
+PUT Endpoint /usuarios Cadastrado
+    ${response}              POST On Session      serverest       /usuarios     data=&{payload}
+    Log to Console           Response: ${response.content}
+    Set Global Variable      ${response}
+
 PUT Endpoint /usuarios Email
     ${payload}               Create Dictionary                   nome=Fabio Luis    email=mv@gmail.com      password=qateste    administrador=false
     ${response}              PUT On Session      serverest       /usuarios/7TH6LoS53DTRI1II   data=&{payload}      expected_status=400
@@ -61,7 +66,7 @@ DELETE Endpoint /usuarios
     Set Global Variable      ${response}
 
 DELETE Endpoint /usuarios Carrinho Cadastrado
-    ${response}              DELETE On Session      serverest       /usuarios/0uxuPY0cbmQhpEz1          expected_status=400
+    ${response}              DELETE On Session      serverest       /usuarios/7TH6LoS53DTRI1II          expected_status=400
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 

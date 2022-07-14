@@ -48,7 +48,7 @@ POST Endpoint /produtos Rota Exclusiva para Administradores
 ###------------------------------------------------------------PUT------------------------------------------------------------###
 PUT Endpoint /produtos
     &{header}                Create Dictionary       Authorization=${token_auth}
-    ${response}              PUT On Session      serverest       /produtos/${id_produto}    data=&{payload}      headers=${header}
+    ${response}              PUT On Session      serverest       /produtos/${id_produto}    data=&{payload}      headers=${header}        expected_status=any
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 
@@ -78,6 +78,12 @@ DELETE Endpoint /produtos
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 
+DELETE Endpoint /produtos Carrinho
+    &{header}                Create Dictionary       Authorization=${token_auth}
+    ${response}              DELETE On Session      serverest       /produtos/BeeJh5lz3k6kSIzA     headers=${header}        expected_status=400
+    Log to Console           Response: ${response.content}
+    Set Global Variable      ${response}
+
 DELETE Endpoint /produtos Token Invalido
     &{header}                Create Dictionary       Authorization=${token_auth}
     ${response}              DELETE On Session      serverest       /produtos/${id_produto}     expected_status=401
@@ -86,7 +92,7 @@ DELETE Endpoint /produtos Token Invalido
 
 DELETE Endpoint /produtos Rota Exclusiva para Administradores
     &{header}                Create Dictionary       Authorization=${token_auth}
-    ${response}              DELETE On Session      serverest       /produtos/${id_produto}     headers=${header}        expected_status=403
+    ${response}              DELETE On Session      serverest       /produtos/aqckBLqNGCcuBanj     headers=${header}        expected_status=403
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 
