@@ -30,7 +30,7 @@ url http://localhost:3000
 - :heavy_check_mark: /carrinhos
 
 
-## Requisitos para a Criação de Códigos de Automação
+## Requisitos para a criação de códigos de automação
 
 - Instalar o Python
 - Instalar o driver do navegador e adicionar ao path nas variáveis de ambiente do sistema

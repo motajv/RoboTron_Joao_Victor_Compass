@@ -18,7 +18,7 @@
     git add .
     git status
     git commit -m "Conclusão 100%"
-    git push DEVELOP HEAD
+    git push "Branch"
 
 **Técnologias utilizadas:**
 
