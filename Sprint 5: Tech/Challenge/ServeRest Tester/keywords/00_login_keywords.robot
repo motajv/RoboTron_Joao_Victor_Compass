@@ -5,11 +5,11 @@ Resource            ../support/base.robot
 *** Variables ***
 ### Dados Usuario Administrador ###
 ${email_para_login_adm}          fulano@qa.com
-${senha_para_login_adm}          teste
+${senha_para_login_adm}          nba123
 
 ### Dados Usuario Nao Administrador ###
-${email_para_login}              lmueller@example.com
-${senha_para_login}              yEdm0HHM4w
+${email_para_login}              anthony95@example.com
+${senha_para_login}              aCc1Wnkq78
 
 *** Keywords ***
 ###------------------------------------------------------------POST------------------------------------------------------------###

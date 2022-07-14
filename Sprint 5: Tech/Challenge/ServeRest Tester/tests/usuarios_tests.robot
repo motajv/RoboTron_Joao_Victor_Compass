@@ -7,7 +7,7 @@ Suite Setup         Criar Sessao
 
 ### Sessão para criação dos cenários de teste
 *** Test Cases ***
-###--------------------Cenários GET Endpoint /usuarios--------------------###
+###--------------------CT02 - Validar listagem de usuários--------------------###
 Cenário: GET Todos os Usuarios 200
     [tags]      GET_USUARIOS
     GET Endpoint /usuarios
@@ -17,11 +17,6 @@ Cenário: GET Usuario Especifico 200
     [tags]      GET_USUARIO_ID                      
     GET Endpoint /usuarios Especifico   
     Validar Status Code "200"
-
-Cenário: GET Usuario Invalido 400
-    [tags]      GET_USUARIO_INVALIDO
-    GET Endpoint /usuarios Invalido
-    Validar Status Code "400"
 
 Cenário: GET Usuarios Adminstradores 200
     [tags]      GET_USUARIO_ADM
@@ -33,7 +28,12 @@ Cenário: GET Usuarios Nao Adminstradores 200
     GET Endpoint /usuarios Nao Administradores 
     Validar Status Code "200"
 
-###--------------------Cenários POST Endpoint /usuarios--------------------###
+Cenário: GET Usuario ID Invalido 400
+    [tags]      GET_USUARIO_ID_INVALIDO
+    GET Endpoint /usuarios Invalido
+    Validar Status Code "400"
+
+###--------------------CT03 - Validar cadastro de usuários--------------------###
 Cenário: POST Cadastrar Usuario 201
     [tags]      POST_USUARIO
     Criar Dados Usuario Valido
@@ -48,7 +48,7 @@ Cenário: POST Cadastrar Usuario Administrador 201
     Validar Status Code "201"
     Validar Se Mensagem Contem "sucesso"
 
-Cenário: POST Criar Usuario de Massa EStatica 201
+Cenário: POST Criar Usuario de Massa Estatica 201
     [tags]      POST_USUARIO_ESTATICO
     Criar user_valido Estatico
     POST Endpoint /usuarios
@@ -67,7 +67,7 @@ Cenário: POST Cadastrar Usuario Email Utilizado 400
     Validar Status Code "400"
     Validar a Mensagem "Este email já está sendo usado"
 
-###--------------------Cenários PUT Endpoint /usuarios--------------------###
+###--------------------CT04 - Validar edição de usuários--------------------###
 Cenário: PUT Editar Usuario 200
     [tags]      PUT_USUARIO
     Criar Dados Usuario Valido
@@ -75,11 +75,28 @@ Cenário: PUT Editar Usuario 200
     PUT Endpoint /usuarios
     Validar Status Code "200"
 
-###--------------------Cenários DELETE Endpoint /usuarios--------------------###
+Cenário: PUT Cadastrar Usuario 201
+    [tags]      PUT_USUARIO_CADASTRAR
+    Criar Dados Usuario Valido
+    POST Endpoint /usuarios
+    PUT Endpoint /usuarios
+    Validar Status Code "201"
+
+Cenário: PUT Email Cadastrado 400
+    [tags]      PUT_USUARIO_EMAIL
+    PUT Endpoint /usuarios Email
+    Validar Status Code "400"
+
+###--------------------CT05 - Validar exclusão de usuários--------------------###
 Cenário: DELETE Deletar Usuario 200
     [tags]      DELETE_USUARIO
     Criar Dados Usuario Valido
     POST Endpoint /usuarios
     DELETE Endpoint /usuarios
     Validar Status Code "200"
+
+Cenário: DELETE Deletar Usuario com Carrinho Cadastrado 400
+    [tags]      DELETE_USUARIO_CARRINHO
+    DELETE Endpoint /usuarios Carrinho Cadastrado
+    Validar Status Code "400"
 

@@ -7,7 +7,7 @@ Suite Setup         Criar Sessao
 
 ### Sessão para criação dos cenarios de teste
 *** Test Cases ***
-###--------------------Cenários POST Endpoint /login--------------------###
+###--------------------CT01 - Validar login--------------------###
 Cenário: POST Realizar login 200
     [tags]      POST_LOGIN_ADM
     POST Endpoint /login

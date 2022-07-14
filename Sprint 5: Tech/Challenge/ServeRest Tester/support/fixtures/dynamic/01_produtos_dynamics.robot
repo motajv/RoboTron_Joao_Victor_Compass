@@ -8,7 +8,8 @@ Library     JSONLibrary
 @{produto}      Televisão    Computador    Monitor    Memória    Mouse    Gabinete     Teclado    Notebook   
 @{marca}        Samsung      Philco        LG         Dell       Sony     Acer         HP         Asus
 ${descricao}    Eletroeletrônico
-${id_produto}   BeeJh5lz3k6kSIzA
+# Utilizado na solicitação GET de produto específico
+${id_produto}   BeeJh5lz3k6kSIzA 
 
 *** Keywords ***
 Criar Dados Produto Valido

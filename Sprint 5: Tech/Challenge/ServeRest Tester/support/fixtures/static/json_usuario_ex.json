@@ -1,7 +1,13 @@
 {
     "user_valido":{
-        "nome": "João Victor",
-        "email": "jvlimamota@gmail.com",
+        "nome": "Marcos Vinicius",
+        "email": "mv@gmail.com",
+        "password": "qa2022",
+        "administrador": "false"
+    },
+    "user_valido_email":{
+        "nome": "Marcos Vinicius",
+        "email": "mv@gmail.com",
         "password": "qa2022",
         "administrador": "false"
     },

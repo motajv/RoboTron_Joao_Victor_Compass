@@ -52,6 +52,19 @@ PUT Endpoint /produtos
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 
+PUT Endpoint /produtos Rota Exclusiva para Administradores
+    &{header}                Create Dictionary       Authorization=${token_auth}
+    ${response}              PUT On Session      serverest       /produtos/${id_produto}    data=&{payload}      headers=${header}        expected_status=403
+    Log to Console           Response: ${response.content}
+    Set Global Variable      ${response}
+
+PUT Endpoint /produtos Existente
+    &{header}                Create Dictionary       Authorization=${token_auth}
+    ${payload}               Create Dictionary       nome="Logitech MX Vertical"          preco=470       descricao="Mouse"        quantidade=381
+    ${response}              PUT On Session      serverest       /produtos/${id_produto}    data=&{payload}      headers=${header}        expected_status=400
+    Log to Console           Response: ${response.content}
+    Set Global Variable      ${response}
+
 PUT Endpoint /produtos Token Invalido
     &{header}                Create Dictionary       Authorization=${token_auth}
     ${response}              PUT On Session      serverest       /produtos/${id_produto}    data=&{payload}     expected_status=401
@@ -61,7 +74,19 @@ PUT Endpoint /produtos Token Invalido
 ###------------------------------------------------------------DELETE------------------------------------------------------------###
 DELETE Endpoint /produtos
     &{header}                Create Dictionary       Authorization=${token_auth}
-    ${response}              DELETE On Session      serverest       /produtos/${id_produto}     headers=${header}
+    ${response}              DELETE On Session      serverest       /produtos/${id_produto}     headers=${header}        expected_status=any
+    Log to Console           Response: ${response.content}
+    Set Global Variable      ${response}
+
+DELETE Endpoint /produtos Token Invalido
+    &{header}                Create Dictionary       Authorization=${token_auth}
+    ${response}              DELETE On Session      serverest       /produtos/${id_produto}     expected_status=401
+    Log to Console           Response: ${response.content}
+    Set Global Variable      ${response}
+
+DELETE Endpoint /produtos Rota Exclusiva para Administradores
+    &{header}                Create Dictionary       Authorization=${token_auth}
+    ${response}              DELETE On Session      serverest       /produtos/${id_produto}     headers=${header}        expected_status=403
     Log to Console           Response: ${response.content}
     Set Global Variable      ${response}
 
@@ -76,6 +101,7 @@ Validar Ter Criado Produto
     Should Not Be Empty     ${response.json()["_id"]}
 
 Criar Um Produto e Armazenar ID
+    Criar Dados Produto Valido
     POST Endpoint /produtos
     Validar Ter Criado Produto
     ${id_produto}           Set Variable            ${response.json()["_id"]}
