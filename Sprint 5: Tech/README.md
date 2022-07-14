@@ -1,6 +1,6 @@
 <h1 align="center">Teste de API - ServeRest</h1>
 
-<h1 align="center">:shopping_cart: https://serverest.dev/</h1>
+<h2 align="center">:shopping_cart: https://serverest.dev</h2>
 
 > O presente código apresenta a automação de testes para as validações de cobertura referente a API ServeRest, uma API Rest gratuita que simula uma loja virtual com intuito de servir como material de estudos de testes de API.
 
